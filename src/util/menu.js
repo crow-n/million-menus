@@ -14,10 +14,6 @@ function assignParams(params) {
     showapi_sign,
     showapi_timestamp: formatterDateTime()
   }, params)
-
-  // 1级分类
-  // 1级分类.2级分类
-  // 2级分类[]  3级分类
 }
 
 async function getCategory() {
@@ -52,7 +48,8 @@ async function getType(type, page) {
   //   type_v3       // 3级分类
   //   des           // 描述
   //   yl            // 食材(数组)
-  //     y1Name      // 食材名
+  //     ylName      // 食材名
+  //     ylUnit      // 食材数
   //   steps         // 步骤(数组)
   //     imgUrl        // 图片
   //     orderNum      // 步骤数

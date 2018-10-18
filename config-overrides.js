@@ -8,8 +8,8 @@ module.exports = function override(config, env) {
   );
   config = rewireLess.withLoaderOptions({
     modifyVars: { 
-      "@primary-color": "#fa8c16",
-      "@link-color": "#fa8c16",
+      "@primary-color": "#f4222d",
+      "@link-color": "#f4222d",
     },
     javascriptEnabled: true,
   })(config, env);

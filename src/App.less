@@ -1,0 +1,178 @@
+@charset 'utf-8';
+
+@themeColor: #f4222d;
+@fontSize: 0.3rem;
+@gap: 0.1rem;
+@headerH: 0.8rem;
+@searchH: 0.8rem;
+
+// 混入 ====================
+// margin-bottom 
+.gap-down(@gapDown:@gap) {
+  margin-bottom: @gapDown;
+}
+// border
+.border(all, @width:1px, @color:#ccc) {
+  border: @width solid @color;
+}
+.border(b, @width:1px, @color:#ccc) {
+  border-bottom: @width solid @color;
+}
+// shadow
+.shadow(@alpha) {
+  box-shadow: 0 0 10px rgba(0,0,0,@alpha)
+}
+
+/* 初始化 */
+p {
+  margin: 0;
+}
+
+/* 修改 antd 的默认样式 */
+.ant-drawer-body {
+  padding: 0;
+}
+
+.ant-card-body {
+  padding: @gap * 2;
+}
+
+.ant-card-meta-title {
+  font-size: 0.32rem;
+}
+
+.search-bar {
+  height: @searchH;
+}
+
+.ant-input {
+  font-size: @fontSize;
+}
+
+.ant-input-search-button {
+  width: 1.6rem;
+  height: @searchH;
+  font-size: @fontSize;
+}
+
+.ant-tag {
+  @lineHeight: 0.4rem;
+  height: @lineHeight;
+  font-size: 0.24rem;
+  line-height: @lineHeight;
+  box-sizing: content-box;
+}
+
+/* 自定义样式 */
+.header {
+  height: @headerH;
+  background: linear-gradient(to right, #fa8c16, @themeColor);
+  text-align: center;
+  color: #fff;
+  font-size: @fontSize;
+  line-height: @headerH;
+}
+
+.show-category-icon {
+  @iconSize: @fontSize * 2;
+  position: absolute;
+  left: 0;
+  margin: ((@headerH - @iconSize) / 2) (@gap * 2);
+  font-size: @iconSize;
+  cursor: pointer;
+}
+
+.search-block {
+  margin: @gap;
+}
+
+.menu-card {
+  overflow: hidden;
+  margin: 0 @gap @gap;
+  font-size: @fontSize;
+  .shadow(.1)
+}
+
+.card-img {
+  width: 1.4rem;
+  height: 1.06rem;
+}
+
+.detail-wrapper {
+  padding: 0 @gap * 2;
+}
+
+.goback {
+  @fontSize: 0.25rem;
+  position: fixed;
+  top: (@headerH - @fontSize) / 2;
+  right: @gap * 2;
+  color: #fff;
+  font-size: @fontSize;
+  line-height: 100%;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.detail-show-box {
+  .border(b);
+}
+
+.detail-food-img {
+  overflow: hidden;
+  height: 5rem;
+  margin: @gap * 1.5 0 @gap * 2;
+  background: no-repeat center / cover;
+  border-radius: 0.1rem;
+  .shadow(.3)
+}
+
+.detail-category-line {
+  font-size: 0.25rem;
+  .gap-down;
+}
+
+.detail-food-name {
+  font-size: 0.35rem;
+  .gap-down;
+}
+
+.detail-food-des {
+  font-size: @fontSize;
+  .gap-down;
+}
+
+.detail-material-tags {
+  .gap-down(@gap * 2);
+}
+
+.steps-box {
+  padding: 0.3rem 0 0 0.1rem;
+}
+
+.step-item {
+  padding-bottom: 0.4rem;
+}
+
+.step-icon {
+  @width: 0.4rem;
+  box-sizing: content-box;
+  width: @width;
+  height: @width;
+  .border(all, @color:@themeColor);
+  font-size: @fontSize;
+  line-height: @width;
+  border-radius: 50%;
+}
+
+.step-cnt {
+  padding-left: 0.2rem;
+  word-break: break-all;
+  font-size: @fontSize;
+}
+
+.step-gap {
+  .gap-down
+}

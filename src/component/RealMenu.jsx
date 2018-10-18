@@ -1,10 +1,113 @@
 import React from 'react'
-import { Menu, Icon } from 'antd';
+import { Menu } from 'antd';
 
 const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
 
 class RealMenu extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      category: {
+        "水产": {
+          "贝": [
+            "蛤蜊",
+            "干贝",
+            "鲍鱼",
+            "牡蛎",
+            "青口",
+            "蛏子",
+            "鲜贝",
+            "北极贝",
+            "河蚌"
+          ],
+          "虾": [
+            "虾仁",
+            "海米",
+            "虾皮",
+            "明虾",
+            "基围虾",
+            "龙虾",
+            "小龙虾",
+            "河虾",
+            "虾",
+            "海虾",
+            "皮皮虾",
+            "北极虾",
+            "虾干",
+            "青虾",
+            "草虾",
+            "海白虾"
+          ],
+          "鱼": [
+            "海水鱼",
+            "淡水鱼",
+            "三文鱼",
+            "鲫鱼",
+            "金枪鱼",
+            "黄鱼",
+            "带鱼",
+            "鳕鱼",
+            "鱼",
+            "鱼头",
+            "鱼干",
+            "鱼籽",
+            "鱼肚"
+          ],
+          "螃蟹": [
+            "梭子蟹",
+            "大闸蟹",
+            "蟹肉",
+            "螃蟹",
+            "蟹黄"
+          ]
+        },
+        "汤粥主食": {
+          "汤羹": [
+            "汤羹"
+          ],
+          "饭": [
+            "饭",
+            "焖",
+            "饭团",
+            "盖浇饭",
+            "煲仔饭",
+            "焗饭",
+            "烩饭"
+          ],
+          "面": [
+            "面",
+            "炒面",
+            "汤面",
+            "凉面",
+            "焖面"
+          ],
+          "饼": [
+            "饼"
+          ]
+        },
+      }
+    }
+  }
+
+  returnMenu(obj) {
+    if(obj instanceof Array) {
+      return obj.map(item => (
+        <Menu.Item key={item}>{item}</Menu.Item>
+      ))
+    }
+    const menu = []
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        menu.push(
+          <SubMenu key={key} title={key}>
+            {this.returnMenu(obj[key])}
+          </SubMenu>
+        )
+      }
+    }
+    return menu
+  }
+
   handleClick = (e) => {
     console.log('click ', e);
   }
@@ -12,36 +115,13 @@ class RealMenu extends React.Component {
   render() {
     return (
       <Menu
-        onClick={this.handleClick}
+        onClickCapture={this.handleClick}
         style={{ width: 256 }}
         defaultSelectedKeys={['1']}
         defaultOpenKeys={['sub1']}
         mode="inline"
       >
-        <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Navigation One</span></span>}>
-          <MenuItemGroup key="g1" title="Item 1">
-            <Menu.Item key="1">Option 1</Menu.Item>
-            <Menu.Item key="2">Option 2</Menu.Item>
-          </MenuItemGroup>
-          <MenuItemGroup key="g2" title="Item 2">
-            <Menu.Item key="3">Option 3</Menu.Item>
-            <Menu.Item key="4">Option 4</Menu.Item>
-          </MenuItemGroup>
-        </SubMenu>
-        <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>Navigation Two</span></span>}>
-          <Menu.Item key="5">Option 5</Menu.Item>
-          <Menu.Item key="6">Option 6</Menu.Item>
-          <SubMenu key="sub3" title="Submenu">
-            <Menu.Item key="7">Option 7</Menu.Item>
-            <Menu.Item key="8">Option 8</Menu.Item>
-          </SubMenu>
-        </SubMenu>
-        <SubMenu key="sub4" title={<span><Icon type="setting" /><span>Navigation Three</span></span>}>
-          <Menu.Item key="9">Option 9</Menu.Item>
-          <Menu.Item key="10">Option 10</Menu.Item>
-          <Menu.Item key="11">Option 11</Menu.Item>
-          <Menu.Item key="12">Option 12</Menu.Item>
-        </SubMenu>
+        {this.returnMenu(this.state.category)}
       </Menu>
     );
   }

@@ -1,0 +1,124 @@
+@charset 'utf-8';
+/* 初始化 */
+p {
+  margin: 0;
+}
+/* 修改 antd 的默认样式 */
+.ant-drawer-body {
+  padding: 0;
+}
+.ant-card-body {
+  padding: 0.2rem;
+}
+.ant-card-meta-title {
+  font-size: 0.32rem;
+}
+.search-bar {
+  height: 0.8rem;
+}
+.ant-input {
+  font-size: 0.3rem;
+}
+.ant-input-search-button {
+  width: 1.6rem;
+  height: 0.8rem;
+  font-size: 0.3rem;
+}
+.ant-tag {
+  height: 0.4rem;
+  font-size: 0.24rem;
+  line-height: 0.4rem;
+  box-sizing: content-box;
+}
+/* 自定义样式 */
+.header {
+  height: 0.8rem;
+  background: linear-gradient(to right, #fa8c16, #f4222d);
+  text-align: center;
+  color: #fff;
+  font-size: 0.3rem;
+  line-height: 0.8rem;
+}
+.show-category-icon {
+  position: absolute;
+  left: 0;
+  margin: 0.1rem 0.2rem;
+  font-size: 0.6rem;
+  cursor: pointer;
+}
+.search-block {
+  margin: 0.1rem;
+}
+.menu-card {
+  overflow: hidden;
+  margin: 0 0.1rem 0.1rem;
+  font-size: 0.3rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.card-img {
+  width: 1.4rem;
+  height: 1.06rem;
+}
+.detail-wrapper {
+  padding: 0 0.2rem;
+}
+.goback {
+  position: fixed;
+  top: 0.275rem;
+  right: 0.2rem;
+  color: #fff;
+  font-size: 0.25rem;
+  line-height: 100%;
+}
+.goback:hover {
+  color: #fff;
+}
+.detail-show-box {
+  border-bottom: 1px solid #ccc;
+}
+.detail-food-img {
+  overflow: hidden;
+  height: 5rem;
+  margin: 0.15rem 0 0.2rem;
+  background: no-repeat center / cover;
+  border-radius: 0.1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.detail-category-line {
+  font-size: 0.25rem;
+  margin-bottom: 0.1rem;
+}
+.detail-food-name {
+  font-size: 0.35rem;
+  margin-bottom: 0.1rem;
+}
+.detail-food-des {
+  font-size: 0.3rem;
+  margin-bottom: 0.1rem;
+}
+.detail-material-tags {
+  margin-bottom: 0.2rem;
+}
+.steps-box {
+  padding: 0.3rem 0 0 0.1rem;
+}
+.step-item {
+  padding-bottom: 0.4rem;
+}
+.step-icon {
+  box-sizing: content-box;
+  width: 0.4rem;
+  height: 0.4rem;
+  border: 1px solid #f4222d;
+  font-size: 0.3rem;
+  line-height: 0.4rem;
+  border-radius: 50%;
+}
+.step-cnt {
+  padding-left: 0.2rem;
+  word-break: break-all;
+  font-size: 0.3rem;
+}
+.step-gap {
+  margin-bottom: 0.1rem;
+}

@@ -22,13 +22,12 @@ class DrawerContainer extends React.Component {
     return (
       <div>
         <Icon 
+          className="show-category-icon"
           type="bars"
-          style={{
-            fontSize: '0.6rem',
-            cursor: 'pointer'}}
           onClickCapture={this.showDrawer} />
         <Drawer
           // title="Basic Drawer"
+          className="drawer-body"
           placement="left"
           closable={false}
           onClose={this.onClose}
