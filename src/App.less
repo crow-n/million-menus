@@ -33,12 +33,21 @@ p {
   padding: 0;
 }
 
+.ant-menu-item {
+  font-size: @fontSize;
+}
+
 .ant-card-body {
   padding: @gap * 2;
 }
 
 .ant-card-meta-title {
   font-size: 0.32rem;
+}
+
+.ant-card-meta-description {
+  overflow: hidden;
+  max-height: @fontSize * 3;
 }
 
 .search-bar {
@@ -57,10 +66,11 @@ p {
 
 .ant-tag {
   @lineHeight: 0.4rem;
+  box-sizing: content-box;
   height: @lineHeight;
+  .gap-down;
   font-size: 0.24rem;
   line-height: @lineHeight;
-  box-sizing: content-box;
 }
 
 /* 自定义样式 */
@@ -87,7 +97,6 @@ p {
 }
 
 .menu-card {
-  overflow: hidden;
   margin: 0 @gap @gap;
   font-size: @fontSize;
   .shadow(.1)
@@ -96,6 +105,28 @@ p {
 .card-img {
   width: 1.4rem;
   height: 1.06rem;
+}
+
+.loading-down {
+  @height: 0.6rem;
+  position: fixed;
+  bottom: -@height;
+  width: 100%;
+  height: @height;
+  background: #fff;
+  text-align: center;
+  font-size: 0.28rem;
+  line-height: @height;
+  .shadow(.2);
+  transition: .2s;
+  
+  &.active {
+    bottom: 0;
+  }
+}
+
+.loading-icon {
+  margin-right: 0.2rem;
 }
 
 .detail-wrapper {
@@ -144,10 +175,6 @@ p {
   .gap-down;
 }
 
-.detail-material-tags {
-  .gap-down(@gap * 2);
-}
-
 .steps-box {
   padding: 0.3rem 0 0 0.1rem;
 }
@@ -173,6 +200,8 @@ p {
   font-size: @fontSize;
 }
 
-.step-gap {
+.step-img {
+  width: 4rem;
+  max-width: 300px;
   .gap-down
 }

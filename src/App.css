@@ -7,11 +7,18 @@ p {
 .ant-drawer-body {
   padding: 0;
 }
+.ant-menu-item {
+  font-size: 0.3rem;
+}
 .ant-card-body {
   padding: 0.2rem;
 }
 .ant-card-meta-title {
   font-size: 0.32rem;
+}
+.ant-card-meta-description {
+  overflow: hidden;
+  max-height: 0.9rem;
 }
 .search-bar {
   height: 0.8rem;
@@ -25,10 +32,11 @@ p {
   font-size: 0.3rem;
 }
 .ant-tag {
+  box-sizing: content-box;
   height: 0.4rem;
+  margin-bottom: 0.1rem;
   font-size: 0.24rem;
   line-height: 0.4rem;
-  box-sizing: content-box;
 }
 /* 自定义样式 */
 .header {
@@ -50,7 +58,6 @@ p {
   margin: 0.1rem;
 }
 .menu-card {
-  overflow: hidden;
   margin: 0 0.1rem 0.1rem;
   font-size: 0.3rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -58,6 +65,24 @@ p {
 .card-img {
   width: 1.4rem;
   height: 1.06rem;
+}
+.loading-down {
+  position: fixed;
+  bottom: -0.6rem;
+  width: 100%;
+  height: 0.6rem;
+  background: #fff;
+  text-align: center;
+  font-size: 0.28rem;
+  line-height: 0.6rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: .2s;
+}
+.loading-down.active {
+  bottom: 0;
+}
+.loading-icon {
+  margin-right: 0.2rem;
 }
 .detail-wrapper {
   padding: 0 0.2rem;
@@ -96,9 +121,6 @@ p {
   font-size: 0.3rem;
   margin-bottom: 0.1rem;
 }
-.detail-material-tags {
-  margin-bottom: 0.2rem;
-}
 .steps-box {
   padding: 0.3rem 0 0 0.1rem;
 }
@@ -119,6 +141,8 @@ p {
   word-break: break-all;
   font-size: 0.3rem;
 }
-.step-gap {
+.step-img {
+  width: 4rem;
+  max-width: 300px;
   margin-bottom: 0.1rem;
 }

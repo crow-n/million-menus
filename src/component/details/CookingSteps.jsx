@@ -15,7 +15,7 @@ const CookingSteps = props => (
           {
             <div className="step-cnt">
               {v.imgUrl !== "" && 
-              <img className="step-gap" src={v.imgUrl} alt=""/>}
+              <img className="step-img" src={v.imgUrl} alt=""/>}
               <p>{v.content}</p>
             </div>
           }

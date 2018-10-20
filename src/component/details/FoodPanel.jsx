@@ -10,17 +10,21 @@ const FoodPanel = props => (
     >
     </div>
     <div className="detail-category-line">
-      <Link to="/">{props.category.v1}</Link>
+      <Link to="/">{props.category.type_v1}</Link>
       {" > "}
-      <Link to="/">{props.category.v2}</Link>
+      <Link to="/">{props.category.type_v2}</Link>
       {" > "}
-      <Link to="/">{props.category.v3}</Link>
+      <Link to="/">{props.category.type_v3}</Link>
     </div>
     <h3 className="detail-food-name">{props.name}</h3>
     <p className="detail-food-des">{props.des}</p>
-    <div className="detail-material-tags">{
-      props.materials.map(v => (
-        <Tag color="volcano">{v.name + " x " + v.amount}</Tag>
+    <div>{
+      props.materials.map((v, i) => (
+        <Tag key={i} color="volcano">
+          { v.ylName }
+          { v.ylUnit ? " x " : "" }
+          { v.ylUnit }
+        </Tag>
       ))
     }</div>
   </div>

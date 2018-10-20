@@ -3,20 +3,25 @@ import { Drawer, Icon } from 'antd';
 
 import RealMenu from './RealMenu'
 
-class DrawerContainer extends React.Component {
-  state = { visible: false, placement: 'left' };
+class DrawerContainer extends React.PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = {
+      visible: false
+    }
+  }
 
   showDrawer = () => {
     this.setState({
       visible: true,
     });
-  };
+  }
 
   onClose = () => {
     this.setState({
       visible: false,
     });
-  };
+  }
 
   render() {
     return (
@@ -26,17 +31,19 @@ class DrawerContainer extends React.Component {
           type="bars"
           onClickCapture={this.showDrawer} />
         <Drawer
-          // title="Basic Drawer"
           className="drawer-body"
           placement="left"
-          closable={false}
+          closable={false}  // 是否显示 'x'
           onClose={this.onClose}
           visible={this.state.visible}
         >
-          <RealMenu />
+          <RealMenu 
+            category={this.props.category} 
+            onClickType={this.props.onClickType}
+            closeDrawer={this.onClose} />
         </Drawer>
       </div>
-    );
+    )
   }
 }
 

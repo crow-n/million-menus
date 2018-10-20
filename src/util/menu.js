@@ -3,11 +3,12 @@ import axios from 'axios'
 // 常量设置 ========================
 axios.defaults.baseURL = 'https://route.showapi.com/'
 
-const showapi_appid = '77623'
-const showapi_sign = '62856b4e41ff4a51afe85c0de613e756'
+const showapi_appid = ''
+const showapi_sign = ''
 const maxResults = 10
 
 // 方法 ============================
+// 合并系统级参数
 function assignParams(params) {
   return Object.assign({
     showapi_appid,
@@ -16,49 +17,26 @@ function assignParams(params) {
   }, params)
 }
 
+// 获取分类列表
+// 错误情况: typeof res === 'string'
 async function getCategory() {
   const result = await axios.get('1164-2', {
     params: assignParams({})
   })
-  return result.data.showapi_res_body
+  const data = result.data
+  if(data.showapi_res_code) {
+    return data.showapi_res_error
+  }
+  const res = data.showapi_res_body
+  delete res.flag
+  delete res.ret_code
+  return res
 }
 
-async function getType(type, page) {
-  const result = await axios.get('1164-1', {
-    params: assignParams({
-      type,
-      maxResults,
-      page
-    })
-  })
-  const data = result.data.showapi_res_body
-
-  // 数据结构
-  // data.flag     // 是否成功
-  // data.allNum   // 数量
-  // data.allPage  // 页数
-  // data.msg      // 提示
-  // data.datas    // 数据
-  //   id            // id
-  //   cpName        // 名称
-  //   smallImg      // 小图
-  //   largeImg      // 大图
-  //   type_v1       // 1级分类
-  //   type_v2       // 2级分类
-  //   type_v3       // 3级分类
-  //   des           // 描述
-  //   yl            // 食材(数组)
-  //     ylName      // 食材名
-  //     ylUnit      // 食材数
-  //   steps         // 步骤(数组)
-  //     imgUrl        // 图片
-  //     orderNum      // 步骤数
-  //     content       // 描述
-
-}
-
+// 获取菜单列表
+// 错误情况: res.flag === false
 async function searchMenu(type, cpName, page) {
-  let result = await axios.get('1164-1', {
+  const result = await axios.get('1164-1', {
     params: assignParams({
       type,
       cpName,
@@ -66,20 +44,18 @@ async function searchMenu(type, cpName, page) {
       page
     })
   })
-  return result.data.showapi_res_body.datas
+  const data = result.data
+  if (data.showapi_res_code) {
+    return {
+      flag: false,
+      msg: data.showapi_res_error
+    }
+  }
+  const res = data.showapi_res_body
+  return res
 }
 
-async function getDetail(type, id) {
-  let result = await axios.get('1164-1', {
-    params: assignParams({
-      type,
-      id
-    })
-  })
-  return result.data.showapi_res_body.datas
-}
-
-
+// 获取时间戳
 function formatterDateTime() {
   var date = new Date()
   var month = date.getMonth() + 1
@@ -103,8 +79,7 @@ function formatterDateTime() {
 
 // 导出 ========================
 export default {
+  maxResults,
   getCategory,
-  getType,
-  searchMenu,
-  getDetail
+  searchMenu
 }
