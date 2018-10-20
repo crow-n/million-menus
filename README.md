@@ -1,14 +1,14 @@
-# 菜谱大全
+# 菜谱大全  
 
-### 介绍
+### 介绍  
 
-本项目实现功能：
+本项目实现功能：  
 
 + 显示菜谱分类
 + 显示、搜索菜谱列表
 + 展示菜谱详情页
 
-
+&nbsp;
 
 ### 环境搭建
 
@@ -20,7 +20,7 @@
 
 由于每天的请求次数受到一定限制，如果要使用本项目请自行申请接口
 
-
+&nbsp;
 
 ##### 此处为申请接口的方法，已经知道的可以跳过
 
@@ -38,7 +38,7 @@
 
 创建好后可以看到应用的 `appId` 和 `密钥` ，这是接下来要用到的数据
 
-
+&nbsp;
 
 ##### 修改项目参数
 
@@ -46,7 +46,7 @@
 
 改为上一小节中讲到的 `appId` 和 `密钥` 的值
 
-
+&nbsp;
 
 ##### 开发环境下启动项目
 
@@ -56,31 +56,28 @@
 
 虽然项目是自适应的，但还是更建议选择 iphone 6/ 7/ 8 的调试模式，展示效果会更好
 
-
+&nbsp;
 
 ### 项目展示
 
-![选择分类](F:\ScreenToGif\category.gif)
+![选择分类](https://github.com/crow-n/million-menus/raw/master/overlook/category.gif)
 
+&nbsp;
+&nbsp;
 
+![搜索](https://github.com/crow-n/million-menus/raw/master/overlook/search.gif)
 
+&nbsp;
+&nbsp;
 
+![搜索失败](https://github.com/crow-n/million-menus/raw/master/overlook/searchError.gif)
 
-![search](F:\ScreenToGif\search.gif)
+&nbsp;
+&nbsp;
 
+![详情页](https://github.com/crow-n/million-menus/raw/master/overlook/detail.gif)
 
-
-
-
-![searchError](F:\ScreenToGif\searchError.gif)
-
-
-
-
-
-![detail](F:\ScreenToGif\detail.gif)
-
-
+&nbsp;
 
 ### 最后
 
