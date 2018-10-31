@@ -2,6 +2,7 @@
   "name": "million-menus",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "antd": "^3.10.1",
     "axios": "^0.18.0",

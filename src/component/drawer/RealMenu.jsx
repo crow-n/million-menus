@@ -42,7 +42,6 @@ class RealMenu extends React.Component {
     return (
       <Menu
         onClickCapture={this.handleClick}
-        style={{ width: '5.12rem' }}
         mode="inline"
       >
         {this.constructMenu(this.props.category)}
