@@ -29,29 +29,20 @@ class App extends React.PureComponent {
     }
     // 请求页数超过总页数 提示
     this.noMoreMsg = '已经到底啦'
-
-    this.handleClickType = this.handleClickType.bind(this)
-    this.handleSearchWord = this.handleSearchWord.bind(this)
-    this.handleScroll = this.handleScroll.bind(this)
   }
 
   // 错误提示
   componentWillUpdate(nextProps, nextState) {
     const newMsg = nextState.msg
-    // 不需要比较 newMsg !== this.state.msg
-    // 因为由 其他state数据 发生的变化, msg都会被置为 ''
-    // 所以 newMsg !== '' 一定是从  错误情况 过来的 update
-    if (newMsg !== '') {
-      if (newMsg === this.noMoreMsg) {
-        message.open({
-          content: newMsg,
-          icon: <Icon type="smile" theme="twoTone" />
-        })
-        this.setState({ msg: '' })
-      }
-      else {
-        message.error(newMsg)
-      }
+    if (newMsg === this.noMoreMsg) {
+      message.open({
+        content: newMsg,
+        icon: <Icon type="smile" theme="twoTone" />
+      })
+      this.setState({ msg: '' })
+    }
+    else if (newMsg !== '') {
+      message.error(newMsg)
     }
   }
 
@@ -69,17 +60,17 @@ class App extends React.PureComponent {
   }
 
   // 点击分类, 调用searchType
-  handleClickType(type) {
+  handleClickType = (type) => {
     this.tryToSetMenu(type, '')
   }
 
   // 点击搜索, 调用searchType
-  handleSearchWord(word) {
+  handleSearchWord = (word) => {
     this.tryToSetMenu(this.state.nowType, word)
   }
 
   // 上拉加载更多, 调用searchType
-  handleScroll() {
+  handleScroll = () => {
     this.tryToSetMenu(
       this.state.nowType,
       this.state.searchWord,
@@ -121,35 +112,23 @@ class App extends React.PureComponent {
       })
   }
 
-  // 让 wrapper 固定位置
-  componentDidMount() {
-    const winHeight = window.screen.height
-    const headerHeight =
-      document.getElementsByClassName('header')[0].getBoundingClientRect().height
-
-    const wrapper = this.refs.wrapper
-    wrapper.style.cssText = `overflow:auto;height:${winHeight - headerHeight}px`
-  }
-
   render() {
     return (
       <Router>
         <div className="app">
-          <Header
-            category={this.state.category}
-            onClickType={this.handleClickType} />
-          <div ref="wrapper">
-            <Switch>
-              <Route exact path="/" render={() => (
-                <SearchAndMenu
-                  onSearch={this.handleSearchWord}
-                  menu={this.state.menu}
-                  loadMoreData={this.handleScroll} />
-              )} />
-              <Route exact path="/:id" component={Details} />
-              <Redirect to="/" />
-            </Switch>
-          </div>
+          <Route path="/" render={(props) =>
+            <Header
+              pathname={props.location.pathname}
+              category={this.state.category}
+              onClickType={this.handleClickType} />
+          } />
+          <Route exact path="/" render={() => (
+            <SearchAndMenu
+              onSearch={this.handleSearchWord}
+              menu={this.state.menu}
+              loadMoreData={this.handleScroll} />
+          )} />
+          <Route exact path="/:id" component={Details} />
         </div>
       </Router>
     )

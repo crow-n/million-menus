@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import DrawerContainer from '../drawer/DrawerContainer.jsx'
 
 const Header = props => (
@@ -7,6 +8,10 @@ const Header = props => (
       category={props.category} 
       onClickType={props.onClickType} />
     菜谱大全
+    {
+      props.pathname !== '/' &&
+      <Link to="/" className="goback">返回</Link>
+    }
   </div>
 )
 

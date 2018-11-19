@@ -40,6 +40,9 @@ p {
 }
 /* 自定义样式 */
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
   height: 0.8rem;
   background: linear-gradient(to right, #fa8c16, #f4222d);
   text-align: center;
@@ -88,12 +91,11 @@ p {
   padding: 0 0.2rem;
 }
 .goback {
-  position: fixed;
-  top: 0.275rem;
+  position: absolute;
+  top: 0;
   right: 0.2rem;
   color: #fff;
   font-size: 0.25rem;
-  line-height: 100%;
 }
 .goback:hover {
   color: #fff;
